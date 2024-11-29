@@ -1,0 +1,48 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: okarun
+  mail:
+    host: smtp.yandex.ru
+    port: 465
+    username: liljvrn@yandex.ru
+    password: mtkocxgwobvgigyd
+    ssl:
+      enabled: true
+  datasource:
+    url: jdbc:postgresql://localhost:25432/postgres
+    username: postgres
+    password: postgres
+    driverClassName: org.postgresql.Driver
+  flyway:
+    enabled: true
+    validate-on-migrate: true
+
+kafka:
+  consumers-enabled: true
+  topics:
+    notification:
+      destination: okarun.notifications
+      groupId: okarun.notifications.1
+  clusters:
+    default:
+      bootstrap-servers:
+        - localhost:29092
+      properties:
+        acks: -1
+        delivery.timeout.ms: 90000
+        batch.size: 10240
+        linger.ms: 100
+        max.in.flight.requests.per.connection: 5
+        enable.idempotence: true
+      consumer:
+        client-id: liljarn.okarun
+        group-id: liljarn.okarun
+        enable-auto-commit: false
+      listener:
+        concurrency: 1
+        ack-mode: record
+      security:
+        protocol: PLAINTEXT
