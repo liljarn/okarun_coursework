@@ -5,10 +5,10 @@ spring:
   application:
     name: okarun
   mail:
-    host: smtp.yandex.ru
-    port: 465
-    username: liljvrn@yandex.ru
-    password: mtkocxgwobvgigyd
+    host: text
+    port: text
+    username: text
+    password: text
     ssl:
       enabled: true
   datasource:
